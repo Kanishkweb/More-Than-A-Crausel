@@ -128,9 +128,25 @@ body {
   padding: 2px 4px;
   width: 18vw;
   height: 46vh;
-  /* position: relative; */
 }
 
+@keyframes borderAnimation {
+  0% {
+    border-color: #ff99cc; /* Light pink */
+  }
+  25% {
+    border-color: #99ccff; /* Light blue */
+  }
+  50% {
+    border-color: #ffffff; /* Light white */
+  }
+  75% {
+    border-color: #ff99cc; /* Light pink */
+  }
+  100% {
+    border-color: #fdeba3; /* You can choose any color or repeat previous colors */
+  }
+}
 #img1,
 #img2,
 #img3 {
@@ -142,8 +158,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   transition: background 1s ease-in-out;
-  /* transform: rotate(-120deg) translateX(-200%); */
-  /* animation: pulse 1s infinite; */
+  animation: borderAnimation 4s linear infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Glowing effect */
 }
 
 .pulse {

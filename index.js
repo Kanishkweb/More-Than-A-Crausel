@@ -8,8 +8,49 @@ let heading = document.getElementById("heading");
 let body = document.getElementsByTagName("body");
 let textAni = document.getElementsByClassName("text");
 const containerImg = document.getElementsByClassName("containerImg");
-console.log(containerImg);
-console.log(textAni);
+
+// Audio files
+
+let entry = new Audio("/songs/entry.mp3");
+let one = new Audio("/songs/1.mp3");
+let two = new Audio("/songs/2.mp3");
+let three = new Audio("/songs/3.mp3");
+
+let audioFiles = [entry, one, two, three];
+
+// Index to keep track of the current audio file
+let currentAudioIndex = 0;
+
+// Function to play the current audio
+function playCurrentAudio() {
+  audioFiles[currentAudioIndex].play();
+}
+
+// Function to stop the current audio
+function stopCurrentAudio() {
+  audioFiles[currentAudioIndex].pause();
+  audioFiles[currentAudioIndex].currentTime = 0;
+}
+
+// Function to handle the ended event and play the next audio
+function handleAudioEnded() {
+  stopCurrentAudio();
+
+  // Update the current audio index
+  currentAudioIndex = (currentAudioIndex + 1) % audioFiles.length;
+
+  // Play the next audio
+  playCurrentAudio();
+}
+
+// Listen for the 'ended' event on each audio file
+audioFiles.forEach((audio) => {
+  console.log("ended");
+  audio.addEventListener("ended", handleAudioEnded);
+});
+
+// Call playCurrentAudio for the default audio (entry)
+playCurrentAudio();
 
 let arrLink = [
   "https://iili.io/Jl9hACJ.md.jpg",
@@ -36,21 +77,41 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.classList.add("animate-bg");
 });
 
+/**
+ * @param {BtnHandler}
+ */
+
 function rightBtnHandler() {
+  // code for audio handleing ...start
+
+  stopCurrentAudio();
+
+  // Update the current audio index
+  currentAudioIndex = (currentAudioIndex + 1) % audioFiles.length;
+
+  // Play the new audio
+  playCurrentAudio();
+
+  //  ... end
   let l = arrLink.length - 1;
   let lP = arrP.length - 1;
   let lH = arrH.length - 1;
+
   let copy = arrLink[l]; // store the last link of the array
-  let copyP = arrP[l]; // store the last link of the array
-  let copyH = arrH[l]; // store the last link of the array
+  let copyP = arrP[l];
+  let copyH = arrH[l];
+
   arrLink.splice(l, 1); // it delete the last link of the array
   arrP.splice(lP, 1);
   arrH.splice(lH, 1);
+
   arrLink.splice(0, 0, copy);
   arrP.splice(0, 0, copyP);
   arrH.splice(0, 0, copyH);
+
   addTextAnimation(textAni);
   addPulseAnimation(containerImg);
+
   para.innerText = `${arrP[0]}`;
   heading.innerText = `${arrH[0]}`;
   if (body) {
@@ -68,20 +129,38 @@ function rightBtnHandler() {
 }
 
 function leftBtnHandler() {
+  // code for audio handleing ...start
+
+  // Stop the current audio
+  stopCurrentAudio();
+
+  // Update the current audio index
+  currentAudioIndex =
+    (currentAudioIndex - 1 + audioFiles.length) % audioFiles.length;
+
+  // Play the new audio
+  playCurrentAudio();
+
+  //  ... end
   let l = arrLink.length - 1;
   let lP = arrP.length - 1;
   let lH = arrH.length - 1;
+
   let copy = arrLink[0]; // store the first element of the array
   let copyP = arrP[0];
   let copyH = arrH[0];
+
   arrLink.splice(0, 1); // it delete the first element of the array
   arrP.splice(0, 1);
   arrH.splice(0, 1);
+
   arrLink.splice(l, 0, copy);
   arrP.splice(lP, 0, copyP);
   arrH.splice(lH, 0, copyH);
+
   addTextAnimation(textAni);
   addPulseAnimation(containerImg);
+
   para.innerText = `${arrP[0]}`;
   heading.innerText = `${arrH[0]}`;
   if (body) {
@@ -98,6 +177,10 @@ function leftBtnHandler() {
   }
 }
 
+/**
+ *
+ * @param {Animations} element
+ */
 function addPulseAnimation(element) {
   if (element) {
     element[0].classList.add("pulse");
