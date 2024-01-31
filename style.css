@@ -1,3 +1,8 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -50,10 +55,10 @@ body {
   width: 100vw;
   height: 90vh;
   /* position: relative; */
-  padding: 0px 22px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0px;
   /* animation: pulse 1s infinite; */
 }
 
@@ -145,15 +150,13 @@ body {
 }
 
 .btnnav {
-  position: absolute;
-  left: 4%;
-  bottom: -92px;
+  text-align: center;
 }
 
 .btnnav img {
   height: 60px;
   width: 60px;
-  margin: 0 1rem;
+  margin: 0 8px;
 }
 
 #left,
@@ -167,19 +170,23 @@ body {
     padding: 2px 4px;
     width: 26vw;
     height: 22vh;
-    right: -60px;
+    /* right: -60px; */
     position: relative;
   }
   .main {
     position: relative;
   }
   .images {
-    width: 62vw;
+    width: 52vw;
     position: static;
+    margin: 2px;
+    gap: 4px;
   }
   .text {
     margin: 2px;
     padding: 2px;
+    margin-left: 16px;
+    width: 36vw;
   }
   .text p {
     margin: 2px;
@@ -206,16 +213,9 @@ body {
   #img3n {
     display: none;
   }
-
-  .btnnav {
-    position: absolute;
-    left: 29%;
-    bottom: 0%;
-  }
-
   .btnnav img {
     height: 60px;
     width: 60px;
-    margin: 0 1rem;
+    margin: 0 8px;
   }
 }
