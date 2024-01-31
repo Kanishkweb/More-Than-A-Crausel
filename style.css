@@ -6,7 +6,7 @@
 body {
   padding: 0;
   margin: 0;
-  background: url("https://iili.io/JcKdPaf.jpg");
+  background: url("https://iili.io/Jl9hACJ.md.jpg");
   background-repeat: no-repeat;
   background-position: none;
   background-size: cover;
@@ -47,6 +47,20 @@ body {
   }
 }
 
+.flip {
+  animation: flip 1s ease-in-out infinite;
+}
+
+@keyframes flip {
+  0%,
+  100% {
+    transform: perspective(400px) rotateY(0);
+  }
+  50% {
+    transform: perspective(400px) rotateY(180deg);
+  }
+}
+
 .animate-bg {
   animation: scaleFadeIn 1.5s ease-in-out;
 }
@@ -72,7 +86,6 @@ body {
   padding: 6px 16px;
   color: white;
   background-color: rgba(14, 14, 14, 0.254);
-  animation: pulse 1s 4;
 }
 
 .text h1 {
